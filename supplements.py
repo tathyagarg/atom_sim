@@ -1,6 +1,12 @@
 import math
 
 
+class SPACE_ARRAY_IDX:
+    MASS = 0
+    ENERGY = 1
+    OBJECTS = 2
+
+
 def decimal_to_int(val: float) -> int:
     """
     Converts the given value to an integer
@@ -50,9 +56,13 @@ def join_numbers(nums: tuple[int, ...]) -> int:
     return total
 
 
-def generate_checksum(*args):
+def generate_checksum(*args) -> int:
     """Use the Luhn Checksum"""
     digits = [n * ((i % 2) + 1) for i, n in enumerate(args)]
     digit_sums = [digit_sum(n) for n in digits]
     check_digit = 10 - (sum(digit_sums) % 10)
     return join_numbers(args) * 10 + check_digit
+
+
+def print_divider(length: int = 20, character: str = '=') -> None:
+    print(character*length)
